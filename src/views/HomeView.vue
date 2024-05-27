@@ -12,15 +12,15 @@
         <VField
           type="text"
           id="orderTel"
-          name="電話"
+          name="手機號碼"
           class="form-control"
-          :class="{ 'is-invalid': errors['電話'] }"
-          placeholder="請輸入電話"
+          :class="{ 'is-invalid': errors['手機號碼'] }"
+          placeholder="請輸入手機號碼"
           rules="required|numeric|min:10|max:10"
           autofocus
           v-model="userData.data.user.tel"
         ></VField>
-        <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
+        <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
       </div>
       <div class="col-md-4 mb-4 mx-auto">
         <span class="text-danger me-1 align-middle">*</span>
