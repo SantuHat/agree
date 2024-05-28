@@ -3,7 +3,7 @@
     <img src="https://noke.jutretail.com.tw/images/logo.png" alt="logo">
   </div>
   <div class="container">
-    <img class="w-100 d-block" src="../../母親節DM_20240417-完稿6.jpg" alt="">
+    <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
     <VForm v-slot="{ errors }" @submit="handleOrderSubmit($event)">
       <div class="col-md-4 mb-2 mx-auto">
         <label for="orderTel" class="sr-only text-primary py-3"
