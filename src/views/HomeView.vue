@@ -31,8 +31,8 @@
         </div>
         <div class="invalid-feedback">{{errors.acceptTerms ? '請勾選同意': ''}}</div>
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary mr-1">送出</button>
+      <div class="form-group text-center mb-5">
+        <button type="submit" class="btn btn-primary mr-1">下一步</button>
         <button type="reset" class="btn btn-secondary">清空</button>
       </div>
     </VForm>
@@ -59,6 +59,7 @@ export default {
       // 表單提交處理邏輯
       console.log(values)
       console.log('userData', this.userData)
+      window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
     }
   }
 }
