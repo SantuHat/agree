@@ -21,25 +21,20 @@
         ></VField>
         <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
       </div>
-      <div class="col-md-4 mb-2 mx-auto">
-        <div class="d-flex" :class="{ 'is-invalid': errors.acceptTerms }">
-          <span class="text-danger me-1 align-middle">*</span>
-          <div class="form-group form-check">
-            <VField name="acceptTerms" type="checkbox" id="acceptTerms" :value="true" class="form-check-input"  rules="required" />
-            <label for="acceptTerms" class="form-check-label">我同意</label>
-          </div>
-        </div>
-        <div class="invalid-feedback">{{errors.acceptTerms ? '請勾選同意': ''}}</div>
+      <div class="d-flex">
+        <button class="btn btn-primary my-4 d-block mx-auto">更換手機號碼</button>
+        <button type="reset" class="btn btn-primary my-4 d-block mx-auto">清除</button>
       </div>
-      <div class="form-group text-center mb-5">
-        <button type="submit" class="btn btn-primary mr-1">參加活動</button>
-        <!-- <button type="reset" class="btn btn-secondary">清空</button> -->
-      </div>
+
     </VForm>
+    <button @click="goLuckyPage" type="button" class="btn btn-secondary my-4 d-block mx-auto ">查詢抽獎號嗎</button>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia'
+import telStore from '../stores/telStore'
+
 // import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
@@ -51,16 +46,28 @@ export default {
     }
   },
   methods: {
+    ...mapActions(telStore, ['setTel', 'getTel']),
     // isDisabled (obj) {
     //   console.log('isDisabled', Object.keys(obj).length)
     //   return Object.keys(obj).length !== 0
     // },
     handleOrderSubmit (values) {
+      localStorage.setItem('tel', values.手機號碼)
       // 表單提交處理邏輯
       console.log(values)
       console.log('userData', this.userData)
       window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+    },
+    goLuckyPage () {
+      window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
     }
+  },
+  computed: {
+    ...mapState(telStore, ['tel'])
+  },
+  mounted () {
+    this.getTel()
+    console.log(this.tel)
   }
 }
 </script>
