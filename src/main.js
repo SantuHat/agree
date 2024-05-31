@@ -27,6 +27,12 @@ configure({
 // 設定預設語系 (如果上方設定很多語系，可以在此加入預設語系)
 setLocale('zh_TW')
 
+// 定義一個新的驗證規則名稱 startsWith09
+defineRule('startsWith09', (value) => {
+  // 驗證函數，檢查輸入值是否以 "09" 開頭
+  return value.startsWith('09') || '手機號碼前兩個數字必須為 09'
+})
+
 const app = createApp(App)
 
 app.component('VForm', Form)

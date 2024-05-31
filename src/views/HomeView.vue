@@ -16,7 +16,7 @@
           class="form-control"
           :class="{ 'is-invalid': errors['手機號碼'] }"
           placeholder="請輸入手機號碼"
-          rules="required|numeric|min:10|max:10"
+          rules="required|numeric|min:10|max:10|startsWith09"
           v-model="userData.tel"
         ></VField>
         <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
