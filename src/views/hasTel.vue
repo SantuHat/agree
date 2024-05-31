@@ -4,7 +4,7 @@
   </RouterLink>
   <div class="container">
     <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
-    <VForm v-slot="{ errors }" @submit="handleOrderSubmit($event)">
+    <!-- <VForm v-slot="{ errors }" @submit="handleOrderSubmit($event)">
       <div class="col-md-4 mb-2 mx-auto">
         <label for="orderTel" class="sr-only text-primary py-3"
           ><span class="text-danger me-1 align-middle">*</span>手機號碼</label
@@ -22,11 +22,10 @@
         <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
       </div>
       <div class="d-flex">
-        <button class="btn btn-primary my-4 d-block mx-auto">更換手機號碼</button>
         <button type="reset" class="btn btn-primary my-4 d-block mx-auto">清除</button>
       </div>
-
-    </VForm>
+    </VForm> -->
+    <button class="btn btn-primary my-4 d-block mx-auto">使用其他號碼參加活動</button>
     <button @click="goLuckyPage" type="button" class="btn btn-secondary my-4 d-block mx-auto ">查詢抽獎號嗎</button>
   </div>
 </template>
