@@ -43,7 +43,7 @@
 import axios from 'axios'
 
 // import HelloWorld from '@/components/HelloWorld.vue'
-const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
+const { VITE_APP_API_NAME } = import.meta.env
 
 export default {
   data () {
@@ -55,20 +55,20 @@ export default {
   },
   methods: {
     getDate () {
-      const url = `${VITE_APP_API_URL}${VITE_APP_API_NAME}`
+      const url = `/api/${VITE_APP_API_NAME}`
       axios.get(url)
         .then((res) => {
-          console.log(res)
+          console.log(res.data)
         })
         .catch((err) => {
           alert(err)
         })
     },
     postForm () {
-      const url = `${VITE_APP_API_URL}${VITE_APP_API_NAME}`
+      const url = `/api/${VITE_APP_API_NAME}`
       axios.post(url, this.userData)
         .then((res) => {
-          console.log(res)
+          console.log(res.data)
         })
         .catch((err) => {
           alert(err)
