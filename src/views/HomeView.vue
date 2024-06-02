@@ -40,7 +40,10 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 // import HelloWorld from '@/components/HelloWorld.vue'
+const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
 
 export default {
   data () {
@@ -51,16 +54,36 @@ export default {
     }
   },
   methods: {
-    // isDisabled (obj) {
-    //   console.log('isDisabled', Object.keys(obj).length)
-    //   return Object.keys(obj).length !== 0
-    // },
+    getDate () {
+      const url = `${VITE_APP_API_URL}${VITE_APP_API_NAME}`
+      axios.get(url)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          alert(err)
+        })
+    },
+    postForm () {
+      const url = `${VITE_APP_API_URL}${VITE_APP_API_NAME}`
+      axios.post(url, this.userData)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          alert(err)
+        })
+    },
     handleOrderSubmit (values) {
       // 表單提交處理邏輯
       console.log(values)
       console.log('userData', this.userData)
-      window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+      this.postForm()
+      // window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
     }
+  },
+  created () {
+    this.getDate()
   }
 }
 </script>
