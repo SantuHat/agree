@@ -4,7 +4,11 @@
   </RouterLink>
   <div class="container">
     <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
-    <VForm v-slot="{ errors }" @submit="handleOrderSubmit($event)">
+    <div class="form-group text-center mb-5" v-if="isRegistration">
+      <button class="btn btn-primary my-4 d-block mx-auto" @click="updateInput('update')">使用其他號碼參加活動</button>
+      <button @click="goLuckyPage" type="button" class="btn btn-secondary my-4 d-block mx-auto ">查詢抽獎號嗎</button>
+    </div>
+    <VForm v-slot="{ errors }" @submit="handleOrderSubmit($event)"  v-else>
       <div class="col-md-4 mb-2 mx-auto">
         <label for="orderTel" class="sr-only text-primary py-3"
           ><span class="text-danger me-1 align-middle">*</span>手機號碼</label
@@ -21,7 +25,7 @@
         ></VField>
         <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
       </div>
-      <div class="col-md-4 mb-2 mx-auto">
+      <div class="col-md-4 mb-2 mx-auto" v-if="type === 'create'">
         <div class="d-flex" :class="{ 'is-invalid': errors.acceptTerms }">
           <span class="text-danger me-1 align-middle">*</span>
           <div class="form-group form-check">
@@ -29,18 +33,21 @@
             <label for="acceptTerms" class="form-check-label">我同意</label>
           </div>
         </div>
-        <div class="invalid-feedback">{{errors.acceptTerms ? '請勾選同意': ''}}</div>
+        <div  class="invalid-feedback">{{errors.acceptTerms ? '請勾選同意': ''}}</div>
       </div>
       <div class="form-group text-center mb-5">
-        <button type="submit" class="btn btn-primary mr-1">參加活動</button>
+        <button type="submit" class="btn btn-primary mr-1">{{ type === 'create' ? '參加活動' : '送出'}}</button>
         <!-- <button type="reset" class="btn btn-secondary">清空</button> -->
       </div>
     </VForm>
+
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { mapActions, mapState } from 'pinia'
+import telStore from '../stores/telStore.js'
 
 // import HelloWorld from '@/components/HelloWorld.vue'
 const { VITE_APP_API_NAME } = import.meta.env
@@ -50,18 +57,50 @@ export default {
     return {
       userData: {
         tel: ''
-      }
+      },
+      isRegistration: false,
+      type: 'create',
+      telId: 0
     }
   },
   methods: {
+    ...mapActions(telStore, ['setTel', 'getTel']),
+    handleOrderSubmit (values) {
+      // 表單提交處理邏輯
+      console.log(values)
+      console.log('userData', this.userData)
+      this.setTel(this.userData.tel)
+      if (this.type === 'create') {
+        this.postForm()
+        window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+      } else if (this.type === 'update') {
+        this.updateApi(this.telId)
+      }
+    },
+    updateInput (type) {
+      this.type = type
+      this.isRegistration = false
+    },
+
+    // api
     getDate () {
       const url = `/api/${VITE_APP_API_NAME}`
       axios.get(url)
         .then((res) => {
           console.log(res.data)
+
+          console.log(this.tel)
+          this.getTel()
+          const resData = res.data
+          this.isRegistration = resData.some((item) => {
+            console.log('item', item)
+            if (item.tel === this.tel) this.telId = item.id
+            return item.tel === this.tel
+          })
+          console.log('isRegistration', this.isRegistration)
         })
         .catch((err) => {
-          alert(err)
+          console.log(err)
         })
     },
     postForm () {
@@ -74,13 +113,26 @@ export default {
           alert(err)
         })
     },
-    handleOrderSubmit (values) {
-      // 表單提交處理邏輯
-      console.log(values)
-      console.log('userData', this.userData)
-      this.postForm()
-      // window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+    updateApi (id) {
+      console.log('id', id)
+      const url = `/api/${VITE_APP_API_NAME}/${id}`
+      axios.put(url, this.userData)
+        .then((res) => {
+          console.log(res.data)
+          alert('已完成修改')
+          window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+        })
+        .catch((res) => {
+          // alert(res.response.data.errors.tel)
+          alert('此號碼已存在')
+        })
+    },
+    goLuckyPage () {
+      window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
     }
+  },
+  computed: {
+    ...mapState(telStore, ['tel'])
   },
   created () {
     this.getDate()

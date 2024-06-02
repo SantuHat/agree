@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export default defineStore('loginStore', {
+export default defineStore('telStore', {
   state: () => ({
     tel: ''
   }),
