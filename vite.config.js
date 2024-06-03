@@ -45,6 +45,13 @@ export default defineConfig(({ mode }) => {
             )
           }
         }
+      },
+      proxy: {
+        '/api': {
+          target: 'https://testappbackend.jutretail.com.tw',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        }
       }
     },
     server: {
