@@ -50,7 +50,7 @@ import { mapActions, mapState } from 'pinia'
 import telStore from '../stores/telStore.js'
 
 // import HelloWorld from '@/components/HelloWorld.vue'
-const { VITE_APP_API_NAME } = import.meta.env
+const { VITE_APP_API_NAME, VITE_API_URL } = import.meta.env
 
 export default {
   data () {
@@ -84,7 +84,7 @@ export default {
 
     // api
     getDate () {
-      const url = `/api/${VITE_APP_API_NAME}`
+      const url = `${VITE_API_URL || ''}/${VITE_APP_API_NAME}`
       axios.get(url)
         .then((res) => {
           console.log(res.data)
