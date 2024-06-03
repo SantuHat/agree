@@ -88,7 +88,7 @@ export default {
         .then((res) => {
           // console.log(res.data)
 
-          // console.log(this.tel)
+          console.log(this.tel)
           this.getTel()
           const resData = res.data
           this.isRegistration = resData.some((item) => {
@@ -96,7 +96,6 @@ export default {
             if (item.tel === this.tel) this.telId = item.id
             return item.tel === this.tel
           })
-          console.log('isRegistration', this.isRegistration)
         })
         .catch((err) => {
           console.log(err)
@@ -131,7 +130,7 @@ export default {
           }
         })
         .catch((res) => {
-          // alert(res.response.data.errors.tel)
+        // alert(res.response.data.errors.tel)
           alert('此號碼已存在')
         })
     },
@@ -141,10 +140,11 @@ export default {
   },
   computed: {
     ...mapState(telStore, ['tel'])
+  },
+  created () {
+    this.getDate()
+    console.log('isRegistration', this.isRegistration)
   }
-  // created () {
-  //   this.getDate()
-  // }
 }
 </script>
 
