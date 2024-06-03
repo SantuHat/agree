@@ -84,7 +84,7 @@ export default {
 
     // api
     getDate () {
-      const url = `${VITE_APP_API_URL}${VITE_APP_API_NAME}`
+      const url = `${VITE_APP_API_URL}/${VITE_APP_API_NAME}`
       axios.get(url)
         .then((res) => {
           console.log(res.data)
@@ -104,7 +104,7 @@ export default {
         })
     },
     postForm () {
-      const url = `${VITE_APP_API_URL}${VITE_APP_API_NAME}`
+      const url = `${VITE_APP_API_URL}/${VITE_APP_API_NAME}`
       axios.post(url, this.userData)
         .then((res) => {
           console.log(res.data)
@@ -115,7 +115,7 @@ export default {
     },
     updateApi (id) {
       console.log('id', id)
-      const url = `${VITE_APP_API_URL}${VITE_APP_API_NAME}/${id}`
+      const url = `${VITE_APP_API_URL}/${VITE_APP_API_NAME}/${id}`
       axios.put(url, this.userData)
         .then((res) => {
           console.log(res.data)
