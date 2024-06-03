@@ -7,9 +7,9 @@ const routes = [
     component: () => import('../views/HomeView.vue')
   },
   {
-    path: '/hastel',
+    path: '/registrate-finished',
     name: 'hastel',
-    component: () => import('../views/hasTel.vue')
+    component: () => import('../views/RegistrateView.vue')
   }
 ]
 
