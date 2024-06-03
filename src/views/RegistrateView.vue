@@ -84,7 +84,7 @@ export default {
 
     // api
     getDate () {
-      const url = `/api/${VITE_APP_API_NAME}`
+      const url = `${VITE_APP_API_URL}${VITE_APP_API_NAME}`
       axios.get(url)
         .then((res) => {
           console.log(res.data)
