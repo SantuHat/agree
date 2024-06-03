@@ -13,12 +13,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-import { mapActions, mapState } from 'pinia'
-import telStore from '../stores/telStore.js'
-
-// import HelloWorld from '@/components/HelloWorld.vue'
-const { VITE_APP_API_NAME } = import.meta.env
 
 export default {
   data () {
@@ -30,80 +24,6 @@ export default {
       type: 'create',
       telId: 0
     }
-  },
-  methods: {
-    ...mapActions(telStore, ['setTel', 'getTel']),
-    handleOrderSubmit (values) {
-      // 表單提交處理邏輯
-      console.log(values)
-      console.log('userData', this.userData)
-      this.setTel(this.userData.tel)
-      if (this.type === 'create') {
-        this.postForm()
-        window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
-      } else if (this.type === 'update') {
-        this.updateApi(this.telId)
-      }
-    },
-    updateInput (type) {
-      this.type = type
-      this.isRegistration = false
-    },
-
-    // api
-    getDate () {
-      const url = `/api/${VITE_APP_API_NAME}`
-      axios.get(url)
-        .then((res) => {
-          console.log(res.data)
-
-          console.log(this.tel)
-          this.getTel()
-          const resData = res.data
-          this.isRegistration = resData.some((item) => {
-            console.log('item', item)
-            if (item.tel === this.tel) this.telId = item.id
-            return item.tel === this.tel
-          })
-          console.log('isRegistration', this.isRegistration)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    },
-    postForm () {
-      const url = `/api/${VITE_APP_API_NAME}`
-      axios.post(url, this.userData)
-        .then((res) => {
-          console.log(res.data)
-        })
-        .catch((err) => {
-          alert(err)
-        })
-    },
-    updateApi (id) {
-      console.log('id', id)
-      const url = `/api/${VITE_APP_API_NAME}/${id}`
-      axios.put(url, this.userData)
-        .then((res) => {
-          console.log(res.data)
-          alert('已完成修改')
-          window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
-        })
-        .catch((res) => {
-          // alert(res.response.data.errors.tel)
-          alert('此號碼已存在')
-        })
-    },
-    goLuckyPage () {
-      window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
-    }
-  },
-  computed: {
-    ...mapState(telStore, ['tel'])
-  },
-  created () {
-    this.getDate()
   }
 }
 </script>
