@@ -68,8 +68,8 @@ export default {
     ...mapActions(telStore, ['setTel', 'getTel']),
     handleOrderSubmit (values) {
       // 表單提交處理邏輯
-      console.log(values)
-      console.log('userData', this.userData)
+      // console.log(values)
+      // console.log('userData', this.userData)
       if (this.type === 'create') {
         this.postForm()
       } else if (this.type === 'update') {
@@ -113,8 +113,8 @@ export default {
             window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
           }
         })
-        .catch((err) => {
-          alert(err)
+        .catch(() => {
+          alert('此號碼已參加活動')
         })
     },
     updateApi (id) {
@@ -141,10 +141,10 @@ export default {
   },
   computed: {
     ...mapState(telStore, ['tel'])
-  },
-  created () {
-    this.getDate()
   }
+  // created () {
+  //   this.getDate()
+  // }
 }
 </script>
 
