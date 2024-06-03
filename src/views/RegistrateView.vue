@@ -3,9 +3,9 @@
     <img src="https://noke.jutretail.com.tw/images/logo.png" alt="logo">
   </RouterLink>
   <div class="container">
-    <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
     <div class="form-group text-center mb-5" v-if="isRegistration">
-      <button class="btn btn-primary my-4 d-block mx-auto" @click="updateInput('update')">使用其他號碼參加活動</button>
+      <h3 class="fw-bold mt-5">您先前已報名成功!</h3>
+      <button class="btn btn-primary my-4 d-block mx-auto" @click="updateInput('update')">更換其他號碼參加活動</button>
       <button @click="goLuckyPage" type="button" class="btn btn-secondary my-4 d-block mx-auto ">查詢抽獎號嗎</button>
     </div>
     <VForm v-slot="{ errors }" @submit="handleOrderSubmit($event)"  v-else>
@@ -14,30 +14,31 @@
           ><span class="text-danger me-1 align-middle">*</span>手機號碼</label
         >
         <VField
-          type="tel"
-          id="orderTel"
+        type="tel"
+        id="orderTel"
           name="手機號碼"
           class="form-control"
           :class="{ 'is-invalid': errors['手機號碼'] }"
           placeholder="請輸入手機號碼"
           rules="required|numeric|min:10|max:10|startsWith09"
           v-model="userData.tel"
-        ></VField>
-        <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
-      </div>
-      <div class="col-md-4 mb-2 mx-auto" v-if="type === 'create'">
-        <div class="d-flex" :class="{ 'is-invalid': errors.acceptTerms }">
-          <span class="text-danger me-1 align-middle">*</span>
-          <div class="form-group form-check">
-            <VField name="acceptTerms" type="checkbox" id="acceptTerms" :value="true" class="form-check-input"  rules="required" />
-            <label for="acceptTerms" class="form-check-label">我同意</label>
-          </div>
+          ></VField>
+          <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
         </div>
-        <div  class="invalid-feedback">{{errors.acceptTerms ? '請勾選同意': ''}}</div>
-      </div>
-      <div class="form-group text-center mb-5">
+        <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
+        <div class="col-md-4 mb-2 mx-auto" v-if="type === 'create'">
+          <div class="d-flex" :class="{ 'is-invalid': errors.acceptTerms }">
+            <span class="text-danger me-1 align-middle">*</span>
+            <div class="form-group form-check">
+              <VField name="acceptTerms" type="checkbox" id="acceptTerms" :value="true" class="form-check-input"  rules="required" />
+              <label for="acceptTerms" class="form-check-label">我同意</label>
+            </div>
+          </div>
+          <div  class="invalid-feedback">{{errors.acceptTerms ? '請勾選同意': ''}}</div>
+        </div>
+      <div class="form-group text-center my-5 d-flex justify-content-evenly">
         <button type="submit" class="btn btn-primary mr-1">{{ type === 'create' ? '參加活動' : '送出'}}</button>
-        <!-- <button type="reset" class="btn btn-secondary">清空</button> -->
+        <button v-if="type === 'update'" @click="this.isRegistration = true" type="button" class="btn btn-secondary">返回</button>
       </div>
     </VForm>
 
@@ -69,10 +70,8 @@ export default {
       // 表單提交處理邏輯
       console.log(values)
       console.log('userData', this.userData)
-      this.setTel(this.userData.tel)
       if (this.type === 'create') {
         this.postForm()
-        window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
       } else if (this.type === 'update') {
         this.updateApi(this.telId)
       }
@@ -87,13 +86,13 @@ export default {
       const url = `${VITE_APP_API_URL}/${VITE_APP_API_NAME}`
       axios.get(url)
         .then((res) => {
-          console.log(res.data)
+          // console.log(res.data)
 
-          console.log(this.tel)
+          // console.log(this.tel)
           this.getTel()
           const resData = res.data
           this.isRegistration = resData.some((item) => {
-            console.log('item', item)
+            // console.log('item', item)
             if (item.tel === this.tel) this.telId = item.id
             return item.tel === this.tel
           })
@@ -108,6 +107,11 @@ export default {
       axios.post(url, this.userData)
         .then((res) => {
           console.log(res.data)
+          if (res.data.success) {
+            this.setTel(this.userData.tel)
+            alert('提交成功')
+            window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+          }
         })
         .catch((err) => {
           alert(err)
@@ -120,7 +124,11 @@ export default {
         .then((res) => {
           console.log(res.data)
           alert('已完成修改')
-          window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+          if (res.data.success) {
+            this.isRegistration = true
+            this.setTel(this.userData.tel)
+            this.type = 'create'
+          }
         })
         .catch((res) => {
           // alert(res.response.data.errors.tel)
