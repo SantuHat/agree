@@ -16,7 +16,7 @@ const DRIVE_LETTER_REGEX = /^[a-z]:/i
 export default defineConfig(({ mode }) => {
   loadEnv(mode)
   return ({
-    base: process.env.NODE_ENV === 'production' ? `/${process.env.REPOSITORY_NAME}/` : '/',
+    base: '/',
     plugins: [
       vue(),
       eslintPlugin({
@@ -46,15 +46,15 @@ export default defineConfig(({ mode }) => {
           }
         }
       }
-    },
-    server: {
-      proxy: {
-        '/api': {
-          target: 'https://testappbackend.jutretail.com.tw',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        }
-      }
     }
+    // server: {
+    //   proxy: {
+    //     '/api': {
+    //       target: 'https://testappbackend.jutretail.com.tw',
+    //       changeOrigin: true,
+    //       rewrite: (path) => path.replace(/^\/api/, '')
+    //     }
+    //   }
+    // }
   })
 })
