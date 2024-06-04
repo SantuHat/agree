@@ -5,6 +5,7 @@
   <div class="container">
     <div class="form-group text-center mb-5" v-if="isRegistration">
       <h3 class="fw-bold mt-5">您先前已報名成功!</h3>
+      <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
       <button class="btn btn-primary my-4 d-block mx-auto" @click="updateInput('update')">更換其他號碼參加活動</button>
       <button @click="goLuckyPage" type="button" class="btn btn-secondary my-4 d-block mx-auto ">查詢抽獎號嗎</button>
     </div>
@@ -25,6 +26,7 @@
           ></VField>
           <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
         </div>
+        <!-- img -->
         <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
         <div class="col-md-4 mb-2 mx-auto" v-if="type === 'create'">
           <div class="d-flex" :class="{ 'is-invalid': errors.acceptTerms }">
@@ -122,11 +124,12 @@ export default {
       axios.put(url, this.userData)
         .then((res) => {
           console.log(res.data)
-          alert('已完成修改')
           if (res.data.success) {
             this.isRegistration = true
             this.setTel(this.userData.tel)
             this.type = 'create'
+            alert('已完成修改')
+            this.goLuckyPage()
           }
         })
         .catch((res) => {
