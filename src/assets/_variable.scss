@@ -338,7 +338,7 @@ $theme-colors: (
   // "light":      $light,
   // "dark":       $dark
   "blue":        #0d6efd,
-  "primary":        #461B09,  //custom =primary-300
+  "primary":        #3377B6,  //custom =primary-300
   "primary-200":    #693B28,  //custom 
   "primary-100":    #B58A78,  //custom
   "secondary":      #EC6933,  //custom =secondary-200,
@@ -485,7 +485,7 @@ $body-text-align:           null !default;
 // $body-color:                $gray-900 !default;
 $body-color:                #343434!default; //  custom
 // $body-bg:                   $white !default;
-$body-bg:                  #FDF8F4 !default;
+$body-bg:                  #3377B6 !default; // *custom
 
 $body-secondary-color:      rgba($body-color, .75) !default;
 $body-secondary-bg:         $gray-200 !default;

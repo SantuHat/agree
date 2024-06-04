@@ -6,7 +6,7 @@
     <img class="w-100 d-block" src="../../public/0329-_08-美妝.jpg" alt="">
 
     <RouterLink to="/registrate-finished" class="form-group text-center mb-5">
-      <button type="button" class="btn btn-primary my-5 d-block mx-auto">立即報名</button>
+      <button type="button" class="btn btn-lg border-white btn-primary my-5 d-block mx-auto">立即登錄</button>
     </RouterLink>
 
   </div>
