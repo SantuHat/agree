@@ -10,6 +10,11 @@ const routes = [
     path: '/registrate-finished',
     name: 'hastel',
     component: () => import('../views/RegistrateView.vue')
+  },
+  {
+    path: '/tel',
+    name: 'tel',
+    component: () => import('../views/TelView.vue')
   }
 ]
 
