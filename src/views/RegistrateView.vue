@@ -116,6 +116,7 @@ export default {
         })
         .catch(() => {
           alert('此號碼已參加活動')
+          this.goLuckyPage()
         })
     },
     updateApi (id) {
