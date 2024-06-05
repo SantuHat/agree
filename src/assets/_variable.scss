@@ -300,7 +300,7 @@ $cyans: (
 // scss-docs-start theme-color-variables
 $blue:       #0d6efd !default;
 // $secondary:     $gray-600 !default;
-$primary:        #461B09 !default;  //custom 
+$primary:        #A35527 !default;  //custom 
 $primary-200:    #693B28 !default;  //custom 
 $primary-100:    #B58A78 !default;  //custom
 $secondary:      #EC6933 !default;  //custom =secondary-200 !default;
@@ -338,7 +338,7 @@ $theme-colors: (
   // "light":      $light,
   // "dark":       $dark
   "blue":        #A2E3FF,
-  "primary":        #3377B6,  //custom =primary-300
+  "primary":        #EC9E76,  //custom =primary-300
   "primary-200":    #693B28,  //custom 
   "primary-100":    #B58A78,  //custom
   "secondary":      #EC6933,  //custom =secondary-200,
@@ -484,8 +484,8 @@ $position-values: (
 $body-text-align:           null !default;
 // $body-color:                $gray-900 !default;
 $body-color:                #343434!default; //  custom
-// $body-bg:                   $white !default;
-$body-bg:                  #3377B6 !default; // *custom
+$body-bg:                   $white !default;
+// $body-bg:                  #A35527 !default; // *custom
 
 $body-secondary-color:      rgba($body-color, .75) !default;
 $body-secondary-bg:         $gray-200 !default;
