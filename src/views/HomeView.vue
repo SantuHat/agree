@@ -10,7 +10,7 @@
     </RouterLink>
     <!-- noke -->
     <a class="noke_position" href="https://noke.jutretail.com.tw/">
-      <img class="noke_size" src="../../public/noke-icon.png" alt="">
+      <P class="text-white fw-bold">中獎查詢</P>
     </a>
     <!-- fb -->
     <a class="fb_position" href="https://www.facebook.com/JUTNOKE/">
@@ -29,7 +29,7 @@
     </RouterLink>
     <!-- noke -->
     <a class="noke_position" href="https://noke.jutretail.com.tw/">
-      <img class="noke_size" src="../../public/noke-icon.png" alt="">
+      <P class="text-white fw-bold fs-4">中獎查詢</P>
     </a>
     <!-- fb -->
     <a class="fb_position" href="https://www.facebook.com/JUTNOKE/">
@@ -80,7 +80,7 @@ export default {
 }
 .noke_position {
   position: absolute;
-  bottom: 4.5%;
+  bottom: 2.5%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
