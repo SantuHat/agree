@@ -4,21 +4,26 @@
   </RouterLink>
   <div class="container">
     <div class="form-group text-center mb-5" v-if="isRegistration">
-      <h3 class="fw-bold mt-5">您先前已報名成功!</h3>
+      <h3 class="fw-bold mt-5 text-blue">您先前已報名成功!</h3>
       <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
-      <button class="btn btn-primary my-4 d-block mx-auto" @click="updateInput('update')">更換其他號碼參加活動</button>
+      <button class="btn btn-primary my-4 d-block mx-auto border-white" @click="updateInput('update'), changeTitle = true">更換其他號碼參加活動</button>
       <button @click="goLuckyPage" type="button" class="btn btn-secondary my-4 d-block mx-auto ">查詢抽獎號嗎</button>
     </div>
     <VForm v-slot="{ errors }" @submit="handleOrderSubmit($event)"  v-else>
       <div class="col-md-4 mb-2 mx-auto">
-        <label for="orderTel" class="sr-only text-primary py-3"
-          ><span class="text-danger me-1 align-middle">*</span>手機號碼</label
+        <label for="orderTel" class="sr-only text-blue fw-bold d-block py-3 text-center fs-2"
+          >
+          <!-- <span class="text-danger me-1 align-middle">
+            *
+          </span> -->
+          {{ changeTitle? '更換手機號碼': '登錄手機號碼抽獎' }}
+          </label
         >
         <VField
         type="tel"
         id="orderTel"
           name="手機號碼"
-          class="form-control"
+          class="form-control bg-white"
           :class="{ 'is-invalid': errors['手機號碼'] }"
           placeholder="請輸入手機號碼"
           rules="required|numeric|min:10|max:10|startsWith09"
@@ -30,16 +35,16 @@
         <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
         <div class="col-md-4 mb-2 mx-auto" v-if="type === 'create'">
           <div class="d-flex" :class="{ 'is-invalid': errors.acceptTerms }">
-            <span class="text-danger me-1 align-middle">*</span>
+            <!-- <span class="text-danger me-1 align-middle">*</span> -->
             <div class="form-group form-check">
-              <VField name="acceptTerms" type="checkbox" id="acceptTerms" :value="true" class="form-check-input"  rules="required" />
-              <label for="acceptTerms" class="form-check-label">我同意</label>
+              <VField name="acceptTerms" type="checkbox" id="acceptTerms" :value="true" class="form-check-input border-white"  rules="required" />
+              <label for="acceptTerms" class="form-check-label text-white">已閱讀以上注意事項並同意參加</label>
             </div>
           </div>
           <div  class="invalid-feedback">{{errors.acceptTerms ? '請勾選同意': ''}}</div>
         </div>
       <div class="form-group text-center my-5 d-flex justify-content-evenly">
-        <button type="submit" class="btn btn-primary mr-1">{{ type === 'create' ? '參加活動' : '送出'}}</button>
+        <button type="submit" class="btn btn-primary mr-1 border-white">{{ type === 'create' ? '參加活動' : '送出'}}</button>
         <button v-if="type === 'update'" @click="this.isRegistration = true" type="button" class="btn btn-secondary">返回</button>
       </div>
     </VForm>
@@ -63,7 +68,8 @@ export default {
       },
       isRegistration: false,
       type: 'create',
-      telId: 0
+      telId: 0,
+      changeTitle: false
     }
   },
   methods: {
