@@ -13,11 +13,11 @@
       <img class="noke_size" src="../../public/noke-icon.png" alt="">
     </a>
     <!-- fb -->
-    <a class="fb_position" href="https://noke.jutretail.com.tw/">
+    <a class="fb_position" href="https://www.facebook.com/JUTNOKE/">
       <img class="noke_size" src="../../public/fb-icon.png" alt="">
     </a>
     <!-- ig -->
-    <a class="ig_position" href="https://noke.jutretail.com.tw/">
+    <a class="ig_position" href="https://www.instagram.com/nokemall/">
       <img class="noke_size" src="../../public/ig-icon.png" alt="">
     </a>
   </div>
@@ -32,7 +32,7 @@
       <img class="noke_size" src="../../public/noke-icon.png" alt="">
     </a>
     <!-- fb -->
-    <a class="fb_position" href="https://www.facebook.com/JUTNOKE">
+    <a class="fb_position" href="https://www.facebook.com/JUTNOKE/">
       <img class="noke_size" src="../../public/fb-icon.png" alt="">
     </a>
     <!-- ig -->
