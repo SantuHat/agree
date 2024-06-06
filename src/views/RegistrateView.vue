@@ -1,11 +1,13 @@
 <template>
   <div class="bg-151515">
     <div class="container">
-      <div class="form-group text-center mb-5" v-if="isRegistration">
-        <h3 class="fw-bold mt-5 text-blue">您先前已報名成功!</h3>
-        <img class="w-100 d-block" src="../../public/母親節DM_20240417-完稿6.jpg" alt="">
-        <button class="btn btn-primary my-4 d-block mx-auto border-white" @click="updateInput('update'), changeTitle = true">更換其他號碼參加活動</button>
-        <button @click="goLuckyPage" type="button" class="btn btn-secondary my-4 d-block mx-auto ">查詢抽獎號嗎</button>
+      <div class="form-group text-center pb-5" v-if="isRegistration">
+        <h3 class="fw-bold pt-5 text-primary">您先前已報名成功!</h3>
+        <div class="col-lg-5 mx-auto">
+          <img class="w-100 d-block" src="../../public/notice.jpg" alt="">
+        </div>
+        <button class="btn btn-primary my-4 d-block mx-auto border-white fw-bold" @click="updateInput('update'), changeTitle = true">更換其他號碼參加活動</button>
+        <button @click="goLuckyPage" type="button" class="btn btn-primary border-white d-block mx-auto fw-bold">查詢抽獎號嗎</button>
       </div>
       <VForm v-slot="{ errors }" @submit="handleOrderSubmit($event)"  v-else>
         <div class="col-md-4 mb-2 mx-auto">
@@ -30,7 +32,7 @@
             <ErrorMessage name="手機號碼" class="invalid-feedback"></ErrorMessage>
           </div>
           <div class="col-lg-5 mx-auto">
-            <img class="w-100 mb-1" src="../../public/65311.jpg" alt="">
+            <img class="w-100 mb-1" src="../../public/notice.jpg" alt="">
           </div>
 
           <!-- <div class="text-white noticeFont col-md-6 mx-auto">
@@ -78,8 +80,8 @@
             <div  class="invalid-feedback text-center">{{errors.acceptTerms ? '請勾選同意': ''}}</div>
           </div>
         <div class="form-group text-center mt-5 pb-5 d-flex justify-content-evenly">
-          <button type="submit" class="btn btn-primary mr-1 border-white">{{ type === 'create' ? '參加活動' : '送出'}}</button>
-          <button v-if="type === 'update'" @click="this.isRegistration = true" type="button" class="btn btn-secondary">返回</button>
+          <button type="submit" class="btn btn-primary mr-1 fw-bold border-white">{{ type === 'create' ? '參加活動' : '送出'}}</button>
+          <button v-if="type === 'update'" @click="this.isRegistration = true" type="button" class="btn btn-primary fw-bold border-white">返回</button>
         </div>
       </VForm>
     </div>
@@ -180,6 +182,7 @@ export default {
     },
     goLuckyPage () {
       window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+      // window.location = 'https://appcrm.jutretail.com.tw/AwsLucky/Pages/LuckyResponse.aspx'
     }
   },
   computed: {

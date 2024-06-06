@@ -4,7 +4,7 @@
   </RouterLink> -->
   <div class=" d-lg-none position-relative">
 
-    <img class="w-100" src="../../public/noke-0607-0708.jpg" alt="noke-img">
+    <img class="w-100" src="../../public/login.jpg" alt="noke-img">
     <RouterLink to="/registrate-finished" class="form-group text-center z_index btn_position">
       <button type="button" class="btn  btn_size"></button>
     </RouterLink>
@@ -13,17 +13,17 @@
       <P class="text-white fw-bold">中獎查詢</P>
     </a>
     <!-- fb -->
-    <a class="fb_position" href="https://www.facebook.com/JUTNOKE/">
-      <img class="noke_size" src="../../public/fb-icon.png" alt="">
+    <a class="fb_position" href="http://pili.app/fb/SQ8QIutF">
+      <img class="noke_size" src="../../public/fb-icon.png" alt="fb-icon">
     </a>
     <!-- ig -->
     <a class="ig_position" href="https://www.instagram.com/nokemall/">
-      <img class="noke_size" src="../../public/ig-icon.png" alt="">
+      <img class="noke_size" src="../../public/ig-icon.png" alt="ig-icon">
     </a>
   </div>
   <!-- desktop -->
   <div class="container d-none d-lg-block">
-    <img class="w-100" src="../../public/noke-0607-0708.jpg" alt="noke-img">
+    <img class="w-100" src="../../public/login.jpg" alt="noke-img">
     <RouterLink to="/registrate-finished" class="form-group text-center z_index btn_position">
       <button type="button" class="btn  btn_size"></button>
     </RouterLink>
@@ -32,12 +32,12 @@
       <P class="text-white fw-bold fs-4">中獎查詢</P>
     </a>
     <!-- fb -->
-    <a class="fb_position" href="https://www.facebook.com/JUTNOKE/">
-      <img class="noke_size" src="../../public/fb-icon.png" alt="">
+    <a class="fb_position" href="http://pili.app/fb/SQ8QIutF">
+      <img class="noke_size" src="../../public/fb-icon.png" alt="fb-icon">
     </a>
     <!-- ig -->
     <a class="ig_position" href="https://www.instagram.com/nokemall/">
-      <img class="noke_size" src="../../public/ig-icon.png" alt="">
+      <img class="noke_size" src="../../public/ig-icon.png" alt="ig-icon">
     </a>
   </div>
 </template>
