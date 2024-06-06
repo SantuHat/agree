@@ -153,7 +153,7 @@ export default {
           if (res.data.success) {
             this.setTel(this.userData.tel)
             alert('提交成功')
-            window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+            window.location = 'https://appre.jutretail.com.tw/AwsLucky/Pages/LuckyIndex.aspx'
           }
         })
         .catch(() => {
@@ -181,8 +181,8 @@ export default {
         })
     },
     goLuckyPage () {
-      window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
-      // window.location = 'https://appcrm.jutretail.com.tw/AwsLucky/Pages/LuckyResponse.aspx'
+      // window.location = 'https://testappcrm.jutretail.com.tw/Pages/LuckyIndex.aspx'
+      window.location = 'https://appre.jutretail.com.tw/AwsLucky/Pages/LuckyIndex.aspx'
     }
   },
   computed: {
