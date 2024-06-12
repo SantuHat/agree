@@ -9,7 +9,7 @@
       <button type="button" class="btn  btn_size"></button>
     </RouterLink>
     <!-- noke -->
-    <a class="noke_position" href="https://noke.jutretail.com.tw/">
+    <a class="noke_position" href="https://noke.jutretail.com.tw/news/366">
       <P class="text-white fw-bold">中獎查詢</P>
     </a>
     <!-- fb -->
@@ -28,7 +28,7 @@
       <button type="button" class="btn  btn_size"></button>
     </RouterLink>
     <!-- noke -->
-    <a class="noke_position" href="https://noke.jutretail.com.tw/">
+    <a class="noke_position" href="https://noke.jutretail.com.tw/news/366">
       <P class="text-white fw-bold fs-4">中獎查詢</P>
     </a>
     <!-- fb -->
