@@ -4,9 +4,11 @@
   </RouterLink> -->
   <div class="bgImg">
     <div class="h_section"></div>
-    <button type="button" class="login_btn mx-auto mb-4">
-      立即登錄
-    </button>
+    <RouterLink to="/registrate-finished">
+      <button type="button" class="login_btn mx-auto mb-4">
+        立即登錄
+      </button>
+    </RouterLink>
     <div class="container border-bottom border-top border-white mb-2">
       <div class="d-flex justify-content-between w-350 mx-auto">
         <a class="d-block text-white p-2 border-end border-white fw-bold" href="https://docs.google.com/document/d/1Gl2vhXCM59CL4Oa3LB8k8_gmhqfebkPm0W6e_A5XUxk/edit?usp=sharing">第一波<br>中獎名單<br>6.7-6.14</a>
