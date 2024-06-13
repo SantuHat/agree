@@ -44,7 +44,7 @@ export default {
 </script>
 <style scoped>
 .bgImg {
-  background-image: url(0613_index.jpg);
+  background-image: url('../../public/0613_index.jpg');
   height: 1180px;
   background-repeat: no-repeat;
   background-size: contain;
