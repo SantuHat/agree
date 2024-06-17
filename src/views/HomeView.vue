@@ -60,7 +60,7 @@ export default {
   width: 200px;
   height: 60px;
   color: white;
-  font-size: 40px;
+  font-size: 32px;
   display: block;
 }
 .h_section {
