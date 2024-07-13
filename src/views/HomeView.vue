@@ -5,11 +5,11 @@
   <div class="wrap">
     <img class="bgImg" src="../../public/0613_index.jpg" alt="">
     <div class="h_section">
-      <RouterLink to="/registrate-finished">
-        <button type="button" class="login_btn mx-auto mb-5 mb-sm-10">
+      <!-- <RouterLink to="/registrate-finished"> -->
+        <button type="button" class="login_btn mx-auto mb-5 mb-sm-10" @click="alert">
           立即登錄
         </button>
-      </RouterLink>
+      <!-- </RouterLink> -->
       <div class="container border-bottom border-top border-white px-0">
         <div class="">
           <a class="text-center d-inline-block col-3 text-white py-2 border-end border-white fw-bold bg_primary" href="https://docs.google.com/document/d/1Gl2vhXCM59CL4Oa3LB8k8_gmhqfebkPm0W6e_A5XUxk/edit?usp=sharing">第一波<br>中獎名單<br>6.7-6.14</a>
@@ -41,6 +41,11 @@ export default {
       isRegistration: false,
       type: 'create',
       telId: 0
+    }
+  },
+  methods: {
+    alert () {
+      alert('活動已結束')
     }
   }
 }
