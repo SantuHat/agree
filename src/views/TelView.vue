@@ -44,10 +44,10 @@ export default {
           console.log(err)
         })
     }
-  },
-  mounted () {
-    this.getDate()
   }
+  // mounted () {
+  //   this.getDate()
+  // }
 }
 </script>
 

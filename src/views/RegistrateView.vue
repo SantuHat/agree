@@ -187,11 +187,11 @@ export default {
   },
   computed: {
     ...mapState(telStore, ['tel'])
-  },
-  created () {
-    this.getDate()
-    console.log('isRegistration', this.isRegistration)
   }
+  // created () {
+  //   this.getDate()
+  //   console.log('isRegistration', this.isRegistration)
+  // }
 }
 </script>
 
